@@ -4,7 +4,7 @@
 	default-lazy-init="default"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<import resource="context1.xml" />
+	<import resource="core-context.xml" />
 <!---
 	<bean id="Controller"
 		class="com.xylugah.springagent.core.Controller" >
