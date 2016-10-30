@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-lazy-init="default"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<import resource="context1.xml" />
+<!---
+	<bean id="Controller"
+		class="com.xylugah.springagent.core.Controller" >
+		<constructor-arg>
+			<map key-type="com.xylugah.springcore.core.Action">
+			 <entry key="GET_STATISTICS" value-ref="StatisticsSv"></entry>
+			 <entry key="GET_INVIRONMENTS" value-ref="EnvironmentsSv"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="EnvironmentsSv"
+		class="com.xylugah.springcore.service.EnvironmentsSv">
+	</bean>
+	<bean id="StatisticsSv"
+		class="com.xylugah.springcore.service.StatisticsSv">
+	</bean>
+-->
+</beans>
