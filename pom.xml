@@ -4,9 +4,11 @@
   <artifactId>SpringProject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  
   <modules>
   	<module>SpringProject-Client</module>
   	<module>SpringProject-Core</module>
   	<module>SpringProject-Server</module>
   </modules>
+  
 </project>
