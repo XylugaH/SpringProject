@@ -1,7 +1,12 @@
 package com.xylugah.springcore.transport;
 
-public interface Transport {
-	public void receive();
+import java.net.Socket;
 
-	public void transmit();
+import com.xylugah.springcore.core.Request;
+import com.xylugah.springcore.core.Response;
+
+public interface Transport {
+	public Request receive(final Socket socket);
+
+	public void transmit(final Response response, final Socket socket);
 }
