@@ -1,8 +1,5 @@
 package com.xylugah.client.core;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import com.xylugah.client.main.Main;
@@ -20,37 +17,11 @@ public class Controller extends Thread {
 
 	@Override
 	public void run() {
-		Request request = readRequest();
+		Transport transport = (Transport) Main.context.getBean("Transport");
+		Request request = transport.receive(socket);
+
 		System.out.println(request.getAction());
 		Response response = new Response();
-		writeResponse(response);
-		Transport myClass = (Transport) Main.context.getBean("Transport");
-		myClass.receive();
+		transport.transmit(response, socket);
 	}
-
-	private Request readRequest() {
-		try {
-			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
-			Object request = inputStream.readObject();
-			if (request instanceof Request) {
-				return (Request) request;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private void writeResponse(final Response response) {
-		try {
-			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-			outputStream.writeObject(response);
-			outputStream.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 }
