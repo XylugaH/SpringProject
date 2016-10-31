@@ -8,8 +8,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.xylugah.client.core.Controller;
-import com.xylugah.client.core.ServiceList;
-import com.xylugah.springcore.core.Action;
 
 public class Main {
 	public static final ApplicationContext context = new ClassPathXmlApplicationContext("Context.xml");
@@ -17,8 +15,6 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		ServiceList list = (ServiceList) context.getBean("ServiceList");
-		list.getServiceList().get(Action.GET_STATISTICS).action();
 		try (ServerSocket socketListener = new ServerSocket(port)) {
 			while (true) {
 				System.out.println("Waiting connection ...");

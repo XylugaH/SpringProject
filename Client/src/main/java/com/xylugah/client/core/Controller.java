@@ -5,6 +5,7 @@ import java.net.Socket;
 import com.xylugah.client.main.Main;
 import com.xylugah.springcore.core.Request;
 import com.xylugah.springcore.core.Response;
+import com.xylugah.springcore.service.Service;
 import com.xylugah.springcore.transport.Transport;
 
 public class Controller extends Thread {
@@ -17,11 +18,11 @@ public class Controller extends Thread {
 
 	@Override
 	public void run() {
-		Transport transport = (Transport) Main.context.getBean("Transport");
-		Request request = transport.receive(socket);
-
-		System.out.println(request.getAction());
-		Response response = new Response();
+		final Transport transport = (Transport) Main.context.getBean("Transport");
+		final Request request = transport.receive(socket);
+		final ServiceList serviceList = (ServiceList) Main.context.getBean("ServiceList");
+		final Service service = serviceList.getService(request.getAction());
+		final Response response = service.action();
 		transport.transmit(response, socket);
 	}
 }
