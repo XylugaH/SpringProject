@@ -16,4 +16,8 @@ public class ServiceList {
 		return serviceList;
 	}
 
+	public Service getService(final Action action) {
+		return serviceList.get(action);
+	}
+
 }
