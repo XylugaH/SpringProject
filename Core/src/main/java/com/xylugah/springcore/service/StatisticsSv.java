@@ -16,8 +16,15 @@ public class StatisticsSv extends Service {
 
 	@Override
 	public Response action() {
-		System.out.println("statistic");
-		return null;
+		long memorySize = getFreeRAM();
+		long diskSize = getFreeDiskSpace();
+		List<String> processesList = null;
+		try {
+			processesList = getProcessList();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return new Response(memorySize, diskSize, processesList);
 	}
 
 	private long getFreeRAM() {
