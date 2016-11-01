@@ -7,7 +7,7 @@ public class EnvironmentsSv extends Service {
 	@Override
 	public Response action() {
 		System.out.println("environment");
-		return null;
+		return new Response();
 	}
 
 }

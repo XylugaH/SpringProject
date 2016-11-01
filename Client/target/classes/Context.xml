@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<import resource="core-context.xml" />
-<!---
-	<bean id="Controller"
-		class="com.xylugah.springagent.core.Controller" >
+
+	<bean id="ServiceList"
+		class="com.xylugah.client.core.ServiceList">
 		<constructor-arg>
 			<map key-type="com.xylugah.springcore.core.Action">
 			 <entry key="GET_STATISTICS" value-ref="StatisticsSv"></entry>
@@ -21,5 +21,5 @@
 	<bean id="StatisticsSv"
 		class="com.xylugah.springcore.service.StatisticsSv">
 	</bean>
--->
+
 </beans>
