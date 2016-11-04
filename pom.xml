@@ -10,7 +10,6 @@
   	<module>SpringProject-Client</module>
   	<module>SpringProject-Core</module>
   	<module>SpringProject-Server</module>
-    <module>Server</module>
   </modules>
   
 </project>
