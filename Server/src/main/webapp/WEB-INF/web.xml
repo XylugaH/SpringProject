@@ -5,13 +5,43 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>Controller</servlet-name>
-  	<display-name>Controller</display-name>
+  	<servlet-name>EnvironmentsController</servlet-name>
+  	<display-name>EnvironmentsController</display-name>
   	<description></description>
-  	<servlet-class>com.xylugah.server.controller.Controller</servlet-class>
+  	<servlet-class>com.xylugah.server.controller.EnvironmentsController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddController</servlet-name>
+  	<display-name>AddController</display-name>
+  	<description></description>
+  	<servlet-class>com.xylugah.server.controller.AddController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RemoveController</servlet-name>
+  	<display-name>RemoveController</display-name>
+  	<description></description>
+  	<servlet-class>com.xylugah.server.controller.RemoveController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>StatisticsController</servlet-name>
+  	<display-name>StatisticsController</display-name>
+  	<description></description>
+  	<servlet-class>com.xylugah.server.controller.StatisticsController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Controller</servlet-name>
-  	<url-pattern>/Controller</url-pattern>
+  	<servlet-name>EnvironmentsController</servlet-name>
+  	<url-pattern>/environments</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddController</servlet-name>
+  	<url-pattern>/environments/add</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemoveController</servlet-name>
+  	<url-pattern>/RemoveController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>StatisticsController</servlet-name>
+  	<url-pattern>/StatisticsController</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddController
+ * Servlet implementation class Controller
  */
-public class AddController extends HttpServlet {
+public class EnvironmentsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddController() {
+	public EnvironmentsController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -28,7 +28,7 @@ public class AddController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("ADD: ").append(request.getContextPath());
+		response.getWriter().append("Environments: ").append(request.getContextPath());
 	}
 
 	/**
