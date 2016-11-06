@@ -9,6 +9,10 @@ public class DataMemoryDAO implements DataDAO {
 
 	private List<Client> clientList = new ArrayList<>();
 
+	public DataMemoryDAO() {
+		super();
+	}
+
 	@Override
 	public void add(final String ip, final int port) {
 		System.out.println("Save to Memory!!");
@@ -28,8 +32,12 @@ public class DataMemoryDAO implements DataDAO {
 	}
 
 	@Override
-	public List<Client> getAll() {
-		return this.clientList;
+	public List<Client> getClientList() {
+		return clientList;
+	}
+
+	public void setClientList(List<Client> clientList) {
+		this.clientList = clientList;
 	}
 
 }

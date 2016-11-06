@@ -4,4 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<import resource="core-context.xml"/>
 
+	<bean id="DataDAO" class="com.xylugah.springcore.dao.DataMemoryDAO"
+		scope="singleton" lazy-init="true">
+	</bean>
+	
+
+	
+	<bean id="Client" class="com.xylugah.springcore.model.Client"></bean>
 </beans>

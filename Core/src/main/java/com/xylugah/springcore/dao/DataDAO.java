@@ -11,6 +11,6 @@ public interface DataDAO {
 
 	public Client getById(final int index);
 
-	public List<Client> getAll();
+	public List<Client> getClientList();
 
 }

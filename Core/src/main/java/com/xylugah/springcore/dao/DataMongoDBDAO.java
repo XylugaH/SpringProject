@@ -27,9 +27,12 @@ public class DataMongoDBDAO implements DataDAO {
 	}
 
 	@Override
-	public List<Client> getAll() {
-		return this.clientList;
+	public List<Client> getClientList() {
+		return clientList;
+	}
 
+	public void setClientList(List<Client> clientList) {
+		this.clientList = clientList;
 	}
 
 }
