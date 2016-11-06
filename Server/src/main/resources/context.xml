@@ -6,9 +6,21 @@
 
 	<bean id="DataDAO" class="com.xylugah.springcore.dao.DataMemoryDAO"
 		scope="singleton" lazy-init="true">
+		<property name="clientList">
+			<list>
+				<bean class="com.xylugah.springcore.model.Client">
+		    		<property name="ip" value="192.168.1.1" />
+					<property name="port" value="8080" />
+				</bean>
+				<bean class="com.xylugah.springcore.model.Client">
+		    		<property name="ip" value="192.168.1.2" />
+					<property name="port" value="8080" />
+				</bean>
+				<bean class="com.xylugah.springcore.model.Client">
+		    		<property name="ip" value="192.168.1.3" />
+					<property name="port" value="8080" />
+				</bean>
+			</list>
+		</property>
 	</bean>
-	
-
-	
-	<bean id="Client" class="com.xylugah.springcore.model.Client"></bean>
 </beans>
