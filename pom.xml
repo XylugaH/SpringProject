@@ -7,9 +7,9 @@
   <packaging>pom</packaging>
   
   <modules>
-  	<module>SpringProject-Client</module>
-  	<module>SpringProject-Core</module>
-  	<module>SpringProject-Server</module>
+  	<module>Client</module>
+  	<module>Core</module>
+  	<module>Server</module>
   </modules>
   
 </project>
