@@ -1,4 +1,4 @@
-package com.xylugah.springcore.core;
+package com.xylugah.springcore.model;
 
 public class GetEnvironmentsRequest extends Request {
 

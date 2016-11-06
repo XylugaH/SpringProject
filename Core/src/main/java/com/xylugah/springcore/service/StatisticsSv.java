@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.management.OperatingSystemMXBean;
-import com.xylugah.springcore.core.Response;
+import com.xylugah.springcore.model.Response;
 
 public class StatisticsSv extends Service {
 	private final int mb = 1024 * 1024;

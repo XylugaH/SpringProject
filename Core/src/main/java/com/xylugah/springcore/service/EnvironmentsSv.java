@@ -1,6 +1,6 @@
 package com.xylugah.springcore.service;
 
-import com.xylugah.springcore.core.Response;
+import com.xylugah.springcore.model.Response;
 
 public class EnvironmentsSv extends Service {
 

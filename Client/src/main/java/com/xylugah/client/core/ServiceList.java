@@ -2,7 +2,7 @@ package com.xylugah.client.core;
 
 import java.util.Map;
 
-import com.xylugah.springcore.core.Action;
+import com.xylugah.springcore.model.Action;
 import com.xylugah.springcore.service.Service;
 
 public class ServiceList {

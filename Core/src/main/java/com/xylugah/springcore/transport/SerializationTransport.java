@@ -5,8 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import com.xylugah.springcore.core.Request;
-import com.xylugah.springcore.core.Response;
+import com.xylugah.springcore.model.Request;
+import com.xylugah.springcore.model.Response;
 
 public class SerializationTransport implements Transport {
 

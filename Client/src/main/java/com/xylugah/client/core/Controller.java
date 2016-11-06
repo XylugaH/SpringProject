@@ -3,8 +3,8 @@ package com.xylugah.client.core;
 import java.net.Socket;
 
 import com.xylugah.client.main.Main;
-import com.xylugah.springcore.core.Request;
-import com.xylugah.springcore.core.Response;
+import com.xylugah.springcore.model.Request;
+import com.xylugah.springcore.model.Response;
 import com.xylugah.springcore.service.Service;
 import com.xylugah.springcore.transport.Transport;
 

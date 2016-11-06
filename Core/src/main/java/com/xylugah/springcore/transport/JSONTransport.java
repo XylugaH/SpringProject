@@ -2,8 +2,8 @@ package com.xylugah.springcore.transport;
 
 import java.net.Socket;
 
-import com.xylugah.springcore.core.Request;
-import com.xylugah.springcore.core.Response;
+import com.xylugah.springcore.model.Request;
+import com.xylugah.springcore.model.Response;
 
 public class JSONTransport implements Transport {
 

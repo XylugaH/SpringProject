@@ -1,4 +1,4 @@
-package com.xylugah.springcore.core;
+package com.xylugah.springcore.model;
 
 public class GetStatisticsRequest extends Request {
 	private static final long serialVersionUID = -6088213404326495758L;

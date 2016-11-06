@@ -3,9 +3,9 @@ package com.xylugah.springcore.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.xylugah.springcore.core.Client;
+import com.xylugah.springcore.model.Client;
 
-public class DataMemoryDAO implements IDataDAO {
+public class DataMemoryDAO implements DataDAO {
 
 	private List<Client> clientList = new ArrayList<>();
 
