@@ -4,6 +4,7 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
   <servlet>
   	<servlet-name>EnvironmentsController</servlet-name>
   	<display-name>EnvironmentsController</display-name>
@@ -28,6 +29,12 @@
   	<description></description>
   	<servlet-class>com.xylugah.server.controller.StatisticsController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ErrorHandler</servlet-name>
+  	<display-name>ErrorHandler</display-name>
+  	<description></description>
+  	<servlet-class>com.xylugan.server.servlet.errorhandler.ErrorHandler</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EnvironmentsController</servlet-name>
   	<url-pattern>/environments</url-pattern>
@@ -44,4 +51,17 @@
   	<servlet-name>StatisticsController</servlet-name>
   	<url-pattern>/StatisticsController</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ErrorHandler</servlet-name>
+  	<url-pattern>/ErrorHandler</url-pattern>
+  </servlet-mapping>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/ErrorHandler</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/ErrorHandler</location>
+  </error-page>
 </web-app>

@@ -1,4 +1,4 @@
-package com.xylugah.server.controller;
+package com.xylugah.server.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
