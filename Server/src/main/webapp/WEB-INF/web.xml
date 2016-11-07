@@ -4,37 +4,29 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath*:src/main/resources/Context.xml</param-value>
-  </context-param>
-
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
   <servlet>
-  	<servlet-name>EnvironmentsController</servlet-name>
-  	<display-name>EnvironmentsController</display-name>
+  	<servlet-name>EnvironmentsServlet</servlet-name>
+  	<display-name>EnvironmentsServlet</display-name>
   	<description></description>
-  	<servlet-class>com.xylugah.server.controller.EnvironmentsController</servlet-class>
+  	<servlet-class>com.xylugah.server.servlet.EnvironmentsServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>AddController</servlet-name>
-  	<display-name>AddController</display-name>
+  	<servlet-name>AddServlet</servlet-name>
+  	<display-name>AddServlet</display-name>
   	<description></description>
-  	<servlet-class>com.xylugah.server.controller.AddController</servlet-class>
+  	<servlet-class>com.xylugah.server.servlet.AddServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RemoveController</servlet-name>
   	<display-name>RemoveController</display-name>
   	<description></description>
-  	<servlet-class>com.xylugah.server.controller.RemoveController</servlet-class>
+  	<servlet-class>com.xylugah.server.servlet.RemoveController</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>StatisticsController</servlet-name>
   	<display-name>StatisticsController</display-name>
   	<description></description>
-  	<servlet-class>com.xylugah.server.controller.StatisticsController</servlet-class>
+  	<servlet-class>com.xylugah.server.servlet.StatisticsController</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ErrorHandler</servlet-name>
@@ -42,12 +34,13 @@
   	<description></description>
   	<servlet-class>com.xylugan.server.servlet.errorhandler.ErrorHandler</servlet-class>
   </servlet>
+  
   <servlet-mapping>
-  	<servlet-name>EnvironmentsController</servlet-name>
+  	<servlet-name>EnvironmentsServlet</servlet-name>
   	<url-pattern>/environments</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>AddController</servlet-name>
+  	<servlet-name>AddServlet</servlet-name>
   	<url-pattern>/environments/add</url-pattern>
   </servlet-mapping>
   <servlet-mapping>

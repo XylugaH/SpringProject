@@ -7,26 +7,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AddController
- */
-public class AddController extends HttpServlet {
+import com.xylugah.server.util.IPAddressValidator;
+
+public class AddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = 0;
-		// try {
-		id = Integer.valueOf(request.getParameter("id"));
-		// } catch (NumberFormatException e) {
-		// id = 1;
-		// }
-		response.getWriter().append(id + "ADD: ").append(request.getContextPath());
+		String ip = request.getParameter("ip");
+		String port = request.getParameter("port");
+		if (ip == null || port == null) {
+
+		}
+		IPAddressValidator ipValidator = new IPAddressValidator();
+		if (!ipValidator.validate(ip)) {
+
+		}
+		// Integer id = (Integer) request.getParameter("port");
+		response.getWriter().append(ip + port + "ADD: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
