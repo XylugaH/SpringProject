@@ -18,7 +18,8 @@
 
 		<!-- Spring -->
 		<spring-framework.version>4.3.3.RELEASE</spring-framework.version>
-
+		<log4j.version>1.2.17</log4j.version>
+		
 	</properties>
 	
 	<dependencies>
@@ -28,6 +29,13 @@
 		<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	
+		<!-- log4j -->
+		<dependency>
+    		<groupId>log4j</groupId>
+    		<artifactId>log4j</artifactId>
+    		<version>${log4j.version}</version>
+		</dependency>
+
 		<!-- Spring and Transactions -->
 		<dependency>
 			<groupId>org.springframework</groupId>

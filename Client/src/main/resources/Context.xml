@@ -9,7 +9,7 @@
 	<bean id="ServiceList"
 		class="com.xylugah.client.core.ServiceList">
 		<constructor-arg>
-			<map key-type="com.xylugah.springcore.core.Action">
+			<map key-type="com.xylugah.springcore.model.Action">
 			 <entry key="GET_STATISTICS" value-ref="StatisticsSv"></entry>
 			 <entry key="GET_INVIRONMENTS" value-ref="EnvironmentsSv"></entry>
 			</map>
