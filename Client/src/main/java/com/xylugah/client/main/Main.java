@@ -19,9 +19,9 @@ public class Main {
 
 		try (ServerSocket socketListener = new ServerSocket(port)) {
 			while (true) {
-				logger.debug("Waiting connection ...");
+				logger.info("Waiting connection ...");
 				Socket socket = socketListener.accept();
-				logger.debug("Connection sucessfull !!!");
+				logger.info("Connection sucessfull !!!");
 				new Controller(socket);
 			}
 		}
