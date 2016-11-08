@@ -16,6 +16,9 @@ public class IPAddressValidator {
 	}
 
 	public boolean validate(final String ip) {
+		if (ip == null) {
+			return false;
+		}
 		matcher = pattern.matcher(ip);
 		return matcher.matches();
 	}
