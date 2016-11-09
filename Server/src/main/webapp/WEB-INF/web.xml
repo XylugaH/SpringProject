@@ -8,6 +8,7 @@
  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+
   <servlet>
   	<servlet-name>EnvironmentsServlet</servlet-name>
   	<display-name>EnvironmentsServlet</display-name>
@@ -59,7 +60,11 @@
   	<servlet-name>ErrorHandler</servlet-name>
   	<url-pattern>/ErrorHandler</url-pattern>
   </servlet-mapping>
-  
+
+  <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
+
+  </welcome-file-list>
   <error-page>
     <error-code>404</error-code>
     <location>/ErrorHandler</location>
@@ -68,4 +73,5 @@
     <exception-type>java.lang.Throwable</exception-type>
     <location>/ErrorHandler</location>
   </error-page>
+
 </web-app>
