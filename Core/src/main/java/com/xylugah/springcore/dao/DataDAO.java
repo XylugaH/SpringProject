@@ -7,7 +7,7 @@ import com.xylugah.springcore.model.Client;
 public interface DataDAO {
 	public void add(final String ip, final int port);
 
-	public void remove(final int id);
+	public boolean remove(final int id);
 
 	public Client getById(final int index);
 

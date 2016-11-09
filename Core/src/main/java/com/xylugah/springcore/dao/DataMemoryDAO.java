@@ -21,9 +21,9 @@ public class DataMemoryDAO implements DataDAO {
 	}
 
 	@Override
-	public void remove(final int id) {
+	public boolean remove(final int id) {
 		clientList.remove(id);
-
+		return true;
 	}
 
 	@Override
