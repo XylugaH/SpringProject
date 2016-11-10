@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -18,10 +19,12 @@ import com.xylugah.springcore.model.Client;
 
 public class EnvironmentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static Logger logger = Logger.getLogger(EnvironmentsServlet.class.getClass());
 	private DataDAO dao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		logger.info("In EnvironmentsServlet");
 		String id = request.getParameter("id");
 		PrintWriter out = response.getWriter();
 		if (id == null) {
@@ -54,6 +57,7 @@ public class EnvironmentsServlet extends HttpServlet {
 			out.println("</body></html>");
 		} else {
 			int intId = Integer.valueOf(id);
+			logger.info("Get user by id = " + intId);
 			Client client = dao.getById(intId);
 			if (client == null) {
 				out.println("<h2>Client with ID=" + intId + " not found!!!</h2>");
@@ -87,6 +91,10 @@ public class EnvironmentsServlet extends HttpServlet {
 		super.init(config);
 		ApplicationContext ac = (ApplicationContext) config.getServletContext()
 				.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
+		// ApplicationContext ac =
+		// WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
 		this.dao = (DataDAO) ac.getBean("DataDAO");
+		// this.transport = (Transport) ac.getBean("Transport");
+
 	}
 }

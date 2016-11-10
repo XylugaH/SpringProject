@@ -1,0 +1,15 @@
+com\xylugah\springcore\dao\DataMemoryDAO.class
+com\xylugah\springcore\service\EnvironmentsSv.class
+com\xylugah\springcore\service\Service.class
+com\xylugah\springcore\service\StatisticsSv.class
+com\xylugah\springcore\model\Action.class
+com\xylugah\springcore\dao\DataMongoDBDAO.class
+com\xylugah\springcore\model\GetStatisticsRequest.class
+com\xylugah\springcore\model\Response.class
+com\xylugah\springcore\model\Client.class
+com\xylugah\springcore\model\Request.class
+com\xylugah\springcore\transport\SerializationTransport.class
+com\xylugah\springcore\dao\DataDAO.class
+com\xylugah\springcore\model\GetEnvironmentsRequest.class
+com\xylugah\springcore\transport\JSONTransport.class
+com\xylugah\springcore\transport\Transport.class
