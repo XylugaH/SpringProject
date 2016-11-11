@@ -1,22 +1,18 @@
 package com.xylugah.springcore.model;
 
-import java.util.List;
-
 public class Client {
+	private int id;
 	private String ip;
 	private int port;
-
-	private long memorySize;
-	private long diskSize;
-	private List<String> processesList;
 
 	public Client() {
 		super();
 	}
 
-	public Client(final String ip, final int port) {
+	public Client(final String ip, final int port, final int id) {
 		this.ip = ip;
 		this.port = port;
+		this.id = id;
 	}
 
 	public String getIp() {
@@ -35,28 +31,12 @@ public class Client {
 		this.port = port;
 	}
 
-	public long getMemorySize() {
-		return memorySize;
+	public int getId() {
+		return id;
 	}
 
-	public void setMemorySize(long memorySize) {
-		this.memorySize = memorySize;
-	}
-
-	public long getDiskSize() {
-		return diskSize;
-	}
-
-	public void setDiskSize(long diskSize) {
-		this.diskSize = diskSize;
-	}
-
-	public List<String> getProcessesList() {
-		return processesList;
-	}
-
-	public void setProcessesList(List<String> processesList) {
-		this.processesList = processesList;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
