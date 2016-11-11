@@ -12,15 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.model.Client;
+import com.xylugah.springcore.transport.Transport;
 
 public class EnvironmentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static Logger logger = Logger.getLogger(EnvironmentsServlet.class.getClass());
+	static Logger logger = Logger.getLogger(EnvironmentsServlet.class);
 	private DataDAO dao;
+	private Transport transport;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,19 +39,10 @@ public class EnvironmentsServlet extends HttpServlet {
 				out.println("<h2>Client list is empty!!!</h2>");
 			} else {
 				for (Client client : clientList) {
+					out.println("<h3> id: " + client.getId() + "</h3>");
 					out.println("<h3> ip-adress: " + client.getIp() + "</h3>");
 					out.println("<h3> port: " + client.getPort() + "</h3>");
 					out.println("<table>");
-					out.println("<tr><td> free memory: " + client.getMemorySize() + "</td></tr>");
-					out.println("<tr><td> free disk space: " + client.getDiskSize() + "</td></tr>");
-					List<String> proclist = client.getProcessesList();
-					if (proclist == null || proclist.isEmpty()) {
-						out.println("<tr><td>Process list is empty!!!</td></tr>");
-					} else {
-						for (String process : proclist) {
-							out.println(process);
-						}
-					}
 					out.println("</table>");
 
 				}
@@ -65,20 +58,11 @@ public class EnvironmentsServlet extends HttpServlet {
 				out.println("<h3> ip-adress: " + client.getIp() + "</h3>");
 				out.println("<h3> port: " + client.getPort() + "</h3>");
 				out.println("<table>");
-				out.println("<tr><td> free memory: " + client.getMemorySize() + "</td></tr>");
-				out.println("<tr><td> free disk space: " + client.getDiskSize() + "</td></tr>");
-				List<String> proclist = client.getProcessesList();
-				if (proclist == null || proclist.isEmpty()) {
-					out.println("<tr><td>Process list is empty!!!</td></tr>");
-				} else {
-					for (String process : proclist) {
-						out.println(process);
-					}
-				}
 				out.println("</table>");
 			}
 
 		}
+		out.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -89,12 +73,16 @@ public class EnvironmentsServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		ApplicationContext ac = (ApplicationContext) config.getServletContext()
-				.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
+		// ApplicationContext ac = (ApplicationContext)
+		// config.getServletContext()
+		// .getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
 		// ApplicationContext ac =
 		// WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
+		// ApplicationContext ac =
+		// WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+		ApplicationContext ac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
 		this.dao = (DataDAO) ac.getBean("DataDAO");
-		// this.transport = (Transport) ac.getBean("Transport");
+		this.transport = (Transport) ac.getBean("Transport");
 
 	}
 }

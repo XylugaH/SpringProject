@@ -16,7 +16,8 @@ public class DataMemoryDAO implements DataDAO {
 	@Override
 	public void add(final String ip, final int port) {
 		System.out.println("Save to Memory!!");
-		clientList.add(new Client(ip, port));
+		int id = 0;
+		clientList.add(new Client(ip, port, id));
 
 	}
 

@@ -2,9 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!--	
-<import resource="core-context.xml"/>
--->
+	
+<import resource="classpath*:core-context.xml"/>
+
 	<bean id="DataDAO" class="com.xylugah.springcore.dao.DataMemoryDAO"
 		scope="singleton" lazy-init="true">
 		<property name="clientList">

@@ -5,6 +5,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Hello World!22</h2>
+<form action="environments/add">
+	<h3>Add new client</h3>
+	ip-address <input type="text" name="ip"/>
+	port <input type="text" name="port"/>
+	<input type="submit" value="Add client"/>
+</form>
+<hr>
+<form action="RemoveController">
+	<h3>Remove client</h3>
+	id <input type="text" name="id"/>
+	<input type="submit" value="remove client"/>
+</form>
+<hr>
+<form action="environments">
+	<h3>Get all statistics</h3>
+	<input type="submit" value="Get all statistics"/>
+</form>
+<hr>
+<form action="environments">
+	<h3>Get statistic by id</h3>
+	id<input type="text" name="id"/>
+	<input type="submit" value="Get statistic"/>
+</form>
+
 </body>
 </html>

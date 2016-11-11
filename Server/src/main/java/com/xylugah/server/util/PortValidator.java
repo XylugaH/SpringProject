@@ -6,9 +6,9 @@ public class PortValidator {
 
 	public static boolean validPortValue(final int port) {
 		if (port < minValue || port > maxValue) {
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 }
