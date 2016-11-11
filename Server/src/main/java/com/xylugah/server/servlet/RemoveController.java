@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -16,6 +17,7 @@ import com.xylugah.springcore.dao.DataDAO;
 
 public class RemoveController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static Logger logger = Logger.getLogger(AddServlet.class);
 	private DataDAO dao;
 
 	public RemoveController() {
@@ -30,14 +32,24 @@ public class RemoveController extends HttpServlet {
 
 		if (id == null) {
 			out.println("<h2>Error: ID is empty!!!</h2>");
+			logger.info("No valid id - " + id);
 		} else {
-			int idClient = Integer.valueOf(id);
-			if (dao.remove(idClient)) {
-				out.println("<h2>Remove successful!!!</h2>");
-			} else {
-				out.println("<h2>Remove error!!!</h2>");
+			try {
+				int idClient = Integer.parseInt(id);
+				if (dao.remove(idClient)) {
+					out.println("<h2>Remove successful!!!</h2>");
+					logger.info("Remove successful id - " + id);
+				} else {
+					out.println("<h2>Remove error!!!</h2>");
+					logger.info("Remove error id - " + id);
+				}
+			} catch (Exception e) {
+				out.println("<h2>No valid id</h2>");
+				logger.error("No valid id - " + id);
 			}
+
 		}
+		out.close();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
