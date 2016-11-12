@@ -8,14 +8,18 @@ import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.sun.management.OperatingSystemMXBean;
 import com.xylugah.springcore.model.Response;
 
 public class StatisticsSv extends Service {
+	private static final Logger logger = Logger.getLogger(StatisticsSv.class);
 	private final int mb = 1024 * 1024;
 
 	@Override
 	public Response action() {
+		logger.info("In StatisticsSv action");
 		long memorySize = getFreeRAM();
 		long diskSize = getFreeDiskSpace();
 		List<String> processesList = null;

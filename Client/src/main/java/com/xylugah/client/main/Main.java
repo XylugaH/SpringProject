@@ -11,9 +11,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.xylugah.client.core.Controller;
 
 public class Main {
-	public static final ApplicationContext context = new ClassPathXmlApplicationContext("Context.xml");
+	public static final ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	public static final int port = 1238;
-	public static final Logger logger = Logger.getLogger(Main.class.getName());
+	public static final Logger logger = Logger.getLogger(Main.class);
 
 	public static void main(String[] args) throws IOException {
 

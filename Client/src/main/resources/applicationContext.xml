@@ -4,7 +4,7 @@
 	default-lazy-init="default"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<import resource="core-context.xml" />
+	<import resource="classpath*:core-context.xml" />
 
 	<bean id="ServiceList"
 		class="com.xylugah.client.core.ServiceList">

@@ -6,12 +6,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import com.xylugah.springcore.model.Request;
-import com.xylugah.springcore.model.Response;
 
 public class SerializationTransport implements Transport {
 
 	@Override
-	public Request receive(final Socket socket) {
+	public Object receive(final Socket socket) {
 		try {
 			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
 			Object request = inputStream.readObject();
@@ -27,7 +26,7 @@ public class SerializationTransport implements Transport {
 	}
 
 	@Override
-	public void transmit(final Response response, final Socket socket) {
+	public void transmit(final Object response, final Socket socket) {
 		try {
 			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
 			outputStream.writeObject(response);
