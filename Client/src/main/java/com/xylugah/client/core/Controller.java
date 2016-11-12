@@ -28,9 +28,15 @@ public class Controller extends Thread {
 			logger.info("Get request " + request.getAction());
 			ServiceList serviceList = (ServiceList) Main.context.getBean("ServiceList");
 			Service service = serviceList.getService(request.getAction());
-			Response response = service.action();
-			logger.info("response " + response.getFreeDiskSpace());
-			transport.transmit(response, socket);
+			if (service != null) {
+				Response response = service.action();
+				transport.transmit(response, socket);
+				logger.info("Data transfer is completed successfully!!!");
+			} else {
+				logger.info("Service " + request.getAction() + " not found in service list!!!");
+			}
+		} else {
+			logger.info("Unknown request!");
 		}
 
 	}
