@@ -23,13 +23,21 @@ public class DataMemoryDAO implements DataDAO {
 
 	@Override
 	public boolean remove(final int id) {
-		clientList.remove(id);
-		return true;
+		try {
+			clientList.remove(id);
+			return true;
+		} catch (IndexOutOfBoundsException ex) {
+			return false;
+		}
 	}
 
 	@Override
-	public Client getById(final int index) {
-		return null;
+	public Client getById(final int id) {
+		try {
+			return clientList.get(id);
+		} catch (IndexOutOfBoundsException ex) {
+			return null;
+		}
 	}
 
 	@Override
