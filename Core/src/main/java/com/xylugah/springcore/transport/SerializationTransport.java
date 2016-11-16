@@ -5,18 +5,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import com.xylugah.springcore.model.Request;
-
 public class SerializationTransport implements Transport {
 
 	@Override
 	public Object receive(final Socket socket) {
 		try {
 			ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
-			Object request = inputStream.readObject();
-			if (request instanceof Request) {
-				return (Request) request;
-			}
+			Object inputObj = inputStream.readObject();
+			return inputObj;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -26,10 +22,10 @@ public class SerializationTransport implements Transport {
 	}
 
 	@Override
-	public void transmit(final Object response, final Socket socket) {
+	public void transmit(final Object outputObj, final Socket socket) {
 		try {
 			ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
-			outputStream.writeObject(response);
+			outputStream.writeObject(outputObj);
 			outputStream.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
