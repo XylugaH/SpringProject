@@ -5,6 +5,7 @@ import java.net.Socket;
 import org.apache.log4j.Logger;
 
 import com.xylugah.client.main.Main;
+import com.xylugah.springcore.model.Action;
 import com.xylugah.springcore.model.Request;
 import com.xylugah.springcore.model.Response;
 import com.xylugah.springcore.service.Service;
@@ -22,18 +23,18 @@ public class Controller extends Thread {
 	@Override
 	public void run() {
 		Transport transport = (Transport) Main.context.getBean("Transport");
-		Object requestObj = transport.receive(socket);
-		if (requestObj instanceof Request) {
-			Request request = (Request) requestObj;
-			logger.info("Get request " + request.getAction());
+		Request requestObj = transport.receiveRequest(socket);
+		if (requestObj != null) {
+			Action requestAction = requestObj.getAction();
+			logger.info("Get request " + requestAction);
 			ServiceList serviceList = (ServiceList) Main.context.getBean("ServiceList");
-			Service service = serviceList.getService(request.getAction());
+			Service service = serviceList.getService(requestAction);
 			if (service != null) {
 				Response response = service.action();
-				transport.transmit(response, socket);
+				transport.transmitResponse(response, socket);
 				logger.info("Data transfer is completed successfully!!!");
 			} else {
-				logger.info("Service " + request.getAction() + " not found in service list!!!");
+				logger.info("Service " + requestObj.getAction() + " not found in service list!!!");
 			}
 		} else {
 			logger.info("Unknown request!");

@@ -9,6 +9,10 @@ public class Response implements Serializable {
 	private double freeDiskSpace;
 	private List<String> processesList;
 
+	public Response() {
+		super();
+	}
+
 	public Response(final double freeMemory, final double freeDiskSpace, final List<String> processesList) {
 		this.freeMemory = freeMemory;
 		this.freeDiskSpace = freeDiskSpace;
