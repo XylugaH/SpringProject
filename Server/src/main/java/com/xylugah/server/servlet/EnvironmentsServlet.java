@@ -66,13 +66,6 @@ public class EnvironmentsServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		// ApplicationContext ac = (ApplicationContext)
-		// config.getServletContext()
-		// .getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
-		// ApplicationContext ac =
-		// WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
-		// ApplicationContext ac =
-		// WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 		ApplicationContext ac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
 		this.dao = (DataDAO) ac.getBean("DataDAO");
 		this.transport = (Transport) ac.getBean("Transport");
