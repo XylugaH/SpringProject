@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 <import resource="classpath*:core-context.xml"/>
-
+<!--
 	<bean id="DataDAO" class="com.xylugah.springcore.dao.DataMemoryDAO"
 		scope="singleton" lazy-init="true">
 		<property name="clientList">
@@ -24,4 +24,9 @@
 			</list>
 		</property>
 	</bean>
+	-->
+	<bean id="DataDAO" class="com.xylugah.springcore.dao.DataMongoDBDAO"
+		scope="singleton" lazy-init="true">
+		</bean>
+	
 </beans>
