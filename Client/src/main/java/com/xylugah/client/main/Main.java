@@ -16,17 +16,6 @@ public class Main {
 	public static final Logger logger = Logger.getLogger(Main.class);
 
 	public static void main(String[] args) throws IOException {
-		// ObjectMapper mapper = new ObjectMapper();
-		// mapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
-		// Request request = new Request(Action.GET_INVIRONMENTS);
-		// mapper.writeValue(System.out, request);
-		//
-		// System.out.println("str");
-
-		// String jsonInString = mapper.writeValueAsString(request);
-		// System.out.println(jsonInString);
-		// Request obj = mapper.readValue(jsonInString, Request.class);
-		// System.out.println(obj.getAction());
 		try (ServerSocket socketListener = new ServerSocket(port)) {
 			while (true) {
 				logger.info("Waiting connection ...");
