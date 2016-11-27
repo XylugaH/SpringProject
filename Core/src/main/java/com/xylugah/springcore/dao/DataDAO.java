@@ -9,7 +9,7 @@ public interface DataDAO {
 
 	public boolean remove(final int id);
 
-	public Client getById(final int index);
+	public Client getById(final int id);
 
 	public List<Client> getClientList();
 
