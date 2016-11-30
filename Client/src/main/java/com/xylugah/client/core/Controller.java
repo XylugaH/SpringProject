@@ -26,18 +26,26 @@ public class Controller extends Thread {
 		Request requestObj = transport.receiveRequest(socket);
 		if (requestObj != null) {
 			Action requestAction = requestObj.getAction();
-			logger.info("Get request " + requestAction);
+			if (logger.isInfoEnabled()) {
+				logger.info("Get request " + requestAction);
+			}
 			ServiceList serviceList = (ServiceList) Main.context.getBean("ServiceList");
 			Service service = serviceList.getService(requestAction);
 			if (service != null) {
 				Response response = service.action();
 				transport.transmitResponse(response, socket);
-				logger.info("Data transfer is completed successfully!!!");
+				if (logger.isInfoEnabled()) {
+					logger.info("Data transfer is completed successfully!!!");
+				}
 			} else {
-				logger.info("Service " + requestObj.getAction() + " not found in service list!!!");
+				if (logger.isInfoEnabled()) {
+					logger.info("Service " + requestObj.getAction() + " not found in service list!!!");
+				}
 			}
 		} else {
-			logger.info("Unknown request!");
+			if (logger.isInfoEnabled()) {
+				logger.info("Unknown request!");
+			}
 		}
 
 	}
