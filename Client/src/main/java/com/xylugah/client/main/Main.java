@@ -18,9 +18,13 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		try (ServerSocket socketListener = new ServerSocket(port)) {
 			while (true) {
-				logger.info("Waiting connection ...");
+				if (logger.isInfoEnabled()) {
+					logger.info("Waiting connection ...");
+				}
 				Socket socket = socketListener.accept();
-				logger.info("Connection sucessfull !!!");
+				if (logger.isInfoEnabled()) {
+					logger.info("Connection sucessfull !!!");
+				}
 				new Controller(socket);
 			}
 		}
