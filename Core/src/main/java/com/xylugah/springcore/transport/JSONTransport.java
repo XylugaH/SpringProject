@@ -27,9 +27,10 @@ public class JSONTransport implements Transport {
 		}
 
 		try {
+
 			Request request = mapper.readValue(obj, Request.class);
-			return request;
-		} catch (IOException e) {
+			return (Request) request;
+		} catch (Exception e) {
 			logger.error("Read request error!", e);
 			return null;
 		}

@@ -19,7 +19,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.model.Action;
 import com.xylugah.springcore.model.Client;
-import com.xylugah.springcore.model.Request;
+import com.xylugah.springcore.model.EnvironmentsRequest;
 import com.xylugah.springcore.model.Response;
 import com.xylugah.springcore.transport.Transport;
 
@@ -77,7 +77,7 @@ public class EnvironmentsServlet extends HttpServlet {
 		out.println("<h3> ip-adress: " + client.getIp() + "</h3>");
 		out.println("<h3> port: " + client.getPort() + "</h3>");
 		try (Socket socket = new Socket(client.getIp(), client.getPort())) {
-			transport.transmitRequest(new Request(Action.GET_STATISTICS), socket);
+			transport.transmitRequest(new EnvironmentsRequest(Action.GET_STATISTICS), socket);
 			Response res = transport.receiveResponse(socket);
 			socket.close();
 			if (res != null) {

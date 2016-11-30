@@ -15,7 +15,6 @@ public class DataMemoryDAO implements DataDAO {
 
 	@Override
 	public void add(final String ip, final int port) {
-		System.out.println("Save to Memory!!");
 		int id = 0;
 		clientList.add(new Client(ip, port, id));
 
@@ -34,7 +33,9 @@ public class DataMemoryDAO implements DataDAO {
 	@Override
 	public Client getById(final int id) {
 		try {
-			return clientList.get(id);
+			Client client = clientList.get(id);
+			client.setId(id);
+			return client;
 		} catch (IndexOutOfBoundsException ex) {
 			return null;
 		}
