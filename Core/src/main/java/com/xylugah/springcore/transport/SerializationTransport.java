@@ -5,10 +5,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import org.apache.log4j.Logger;
+
 import com.xylugah.springcore.model.Request;
 import com.xylugah.springcore.model.Response;
 
 public class SerializationTransport implements Transport {
+	public static final Logger logger = Logger.getLogger(SerializationTransport.class);
 
 	@Override
 	public Request receiveRequest(final Socket socket) {
@@ -16,13 +19,19 @@ public class SerializationTransport implements Transport {
 		try {
 			obj = receive(socket);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.error("Class not found!", e);
+			return null;
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IO error!", e);
+			return null;
 		}
+
 		if (obj instanceof Request) {
 			return (Request) obj;
 		} else {
+			if (logger.isInfoEnabled()) {
+				logger.info("Object not instance of request!");
+			}
 			return null;
 		}
 	}
@@ -32,7 +41,7 @@ public class SerializationTransport implements Transport {
 		try {
 			transmit(request, socket);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IO error!", e);
 		}
 	}
 
@@ -42,13 +51,18 @@ public class SerializationTransport implements Transport {
 		try {
 			obj = receive(socket);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.error("Class not found!", e);
+			return null;
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IO error!", e);
+			return null;
 		}
 		if (obj instanceof Response) {
 			return (Response) obj;
 		} else {
+			if (logger.isInfoEnabled()) {
+				logger.info("Object not instance of response!");
+			}
 			return null;
 		}
 	}
@@ -58,7 +72,7 @@ public class SerializationTransport implements Transport {
 		try {
 			transmit(response, socket);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IO error!", e);
 		}
 	}
 
