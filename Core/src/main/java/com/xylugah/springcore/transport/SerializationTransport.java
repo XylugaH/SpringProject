@@ -1,6 +1,8 @@
 package com.xylugah.springcore.transport;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import com.xylugah.springcore.model.Request;
@@ -58,6 +60,18 @@ public class SerializationTransport implements Transport {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private Object receive(final Socket socket) throws IOException, ClassNotFoundException {
+		ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
+		Object inputObj = inputStream.readObject();
+		return inputObj;
+	}
+
+	private void transmit(final Object outputObj, final Socket socket) throws IOException {
+		ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
+		outputStream.writeObject(outputObj);
+		outputStream.flush();
 	}
 
 }
