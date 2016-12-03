@@ -1,13 +1,16 @@
 package com.xylugah.springcore.dao;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.apache.log4j.Logger;
 
 import com.xylugah.springcore.model.Client;
 
 public class DataMemoryDAO implements DataDAO {
 
-	private List<Client> clientList = new ArrayList<>();
+	public static final Logger logger = Logger.getLogger(DataMemoryDAO.class);
+	private List<Client> clientList = new CopyOnWriteArrayList<>();
 
 	public DataMemoryDAO() {
 		super();
@@ -15,9 +18,10 @@ public class DataMemoryDAO implements DataDAO {
 
 	@Override
 	public void add(final String ip, final int port) {
-		int id = 0;
-		clientList.add(new Client(ip, port, id));
-
+		clientList.add(new Client(ip, port, 0));
+		if (logger.isInfoEnabled()) {
+			logger.info("Add client sucessfull!");
+		}
 	}
 
 	@Override
@@ -25,7 +29,10 @@ public class DataMemoryDAO implements DataDAO {
 		try {
 			clientList.remove(id);
 			return true;
-		} catch (IndexOutOfBoundsException ex) {
+		} catch (IndexOutOfBoundsException e) {
+			if (logger.isInfoEnabled()) {
+				logger.info("Out of index!" + id);
+			}
 			return false;
 		}
 	}
@@ -36,7 +43,10 @@ public class DataMemoryDAO implements DataDAO {
 			Client client = clientList.get(id);
 			client.setId(id);
 			return client;
-		} catch (IndexOutOfBoundsException ex) {
+		} catch (IndexOutOfBoundsException e) {
+			if (logger.isInfoEnabled()) {
+				logger.info("Out of index!" + id);
+			}
 			return null;
 		}
 	}
