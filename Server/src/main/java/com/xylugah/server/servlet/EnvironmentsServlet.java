@@ -26,7 +26,7 @@ import com.xylugah.springcore.transport.Transport;
 public class EnvironmentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger logger = Logger.getLogger(EnvironmentsServlet.class);
-	private DataDAO dao;
+	private DataDAO<Client> dao;
 	private Transport transport;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

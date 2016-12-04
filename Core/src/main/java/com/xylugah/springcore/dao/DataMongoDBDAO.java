@@ -15,13 +15,18 @@ public class DataMongoDBDAO implements DataDAO {
 	private MongoClient mongo = null;
 	private DB db = null;
 
+	private final int dbPort = 27017;
+	private final String dbHost = "localhost";
+	private final String dbname = "ClientDB";
+	private final String dbCollection = "client";
+
 	public DataMongoDBDAO() {
 		getConnection();
 	}
 
 	@Override
 	public void add(final String ip, final int port) {
-		DBCollection table = db.getCollection("client");
+		DBCollection table = db.getCollection(this.dbCollection);
 		BasicDBObject document = new BasicDBObject();
 		document.put("id", 2);
 		document.put("ip", ip);
@@ -31,7 +36,7 @@ public class DataMongoDBDAO implements DataDAO {
 
 	@Override
 	public boolean remove(final int id) {
-		DBCollection table = db.getCollection("client");
+		DBCollection table = db.getCollection(this.dbCollection);
 
 		BasicDBObject searchQuery = new BasicDBObject();
 		searchQuery.put("id", id);
@@ -47,7 +52,7 @@ public class DataMongoDBDAO implements DataDAO {
 
 	@Override
 	public Client getById(int id) {
-		DBCollection table = db.getCollection("client");
+		DBCollection table = db.getCollection(this.dbCollection);
 
 		BasicDBObject searchQuery = new BasicDBObject();
 		searchQuery.put("id", id);
@@ -67,7 +72,7 @@ public class DataMongoDBDAO implements DataDAO {
 	@Override
 	public List<Client> getClientList() {
 		List<Client> clientList = new ArrayList<>();
-		DBCollection table = db.getCollection("client");
+		DBCollection table = db.getCollection(this.dbCollection);
 		DBCursor cursor = table.find();
 		while (cursor.hasNext()) {
 			DBObject obj = cursor.next();
@@ -84,9 +89,10 @@ public class DataMongoDBDAO implements DataDAO {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void getConnection() {
-		this.mongo = new MongoClient("localhost", 27017);
-		this.db = mongo.getDB("ClientDB");
+		this.mongo = new MongoClient(this.dbHost, this.dbPort);
+		this.db = mongo.getDB(dbname);
 	}
 
 }
