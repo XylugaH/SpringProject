@@ -36,7 +36,7 @@ public class RemoveController extends HttpServlet {
 		} else {
 			try {
 				int idClient = Integer.parseInt(id);
-				if (dao.remove(idClient)) {
+				if (dao.removeById(idClient)) {
 					out.println("<h2>Remove successful!!!</h2>");
 					logger.info("Remove successful id - " + id);
 				} else {

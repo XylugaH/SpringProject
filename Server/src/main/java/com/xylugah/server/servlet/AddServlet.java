@@ -16,11 +16,12 @@ import org.springframework.web.context.WebApplicationContext;
 import com.xylugah.server.util.IPAddressValidator;
 import com.xylugah.server.util.PortValidator;
 import com.xylugah.springcore.dao.DataDAO;
+import com.xylugah.springcore.entity.Client;
 
 public class AddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger logger = Logger.getLogger(AddServlet.class);
-	private DataDAO dao;
+	private DataDAO<Client> dao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -43,7 +44,8 @@ public class AddServlet extends HttpServlet {
 						out.println("<h2>No valid port value. Value must be 1024...49151</h2>");
 						logger.info("No valid port value - " + port);
 					} else {
-						dao.add(ip, portInt);
+						Client client = new Client(ip, portInt, 0);
+						dao.add(client);
 						out.println("<h2>New client is added successfully</h2>");
 						logger.info("Add new client " + ip + ":" + port);
 					}
@@ -66,7 +68,7 @@ public class AddServlet extends HttpServlet {
 		super.init(config);
 		ApplicationContext ac = (ApplicationContext) config.getServletContext()
 				.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
-		this.dao = (DataDAO) ac.getBean("DataDAO");
+		this.dao = (DataDAO<Client>) ac.getBean("DataDAO");
 	}
 
 }

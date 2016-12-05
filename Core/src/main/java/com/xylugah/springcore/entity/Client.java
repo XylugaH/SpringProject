@@ -1,6 +1,6 @@
-package com.xylugah.springcore.model;
+package com.xylugah.springcore.entity;
 
-public class Client {
+public class Client extends Entity {
 	private int id;
 	private String ip;
 	private int port;

@@ -5,9 +5,9 @@ import java.net.Socket;
 import org.apache.log4j.Logger;
 
 import com.xylugah.client.main.Main;
+import com.xylugah.springcore.messages.Request;
+import com.xylugah.springcore.messages.Response;
 import com.xylugah.springcore.model.Action;
-import com.xylugah.springcore.model.Request;
-import com.xylugah.springcore.model.Response;
 import com.xylugah.springcore.service.Service;
 import com.xylugah.springcore.transport.Transport;
 

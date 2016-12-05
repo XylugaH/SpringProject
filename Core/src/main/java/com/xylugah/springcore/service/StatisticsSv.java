@@ -11,7 +11,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.sun.management.OperatingSystemMXBean;
-import com.xylugah.springcore.model.Response;
+import com.xylugah.springcore.messages.Response;
 
 public class StatisticsSv extends Service {
 	private static final Logger logger = Logger.getLogger(StatisticsSv.class);

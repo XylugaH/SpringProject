@@ -2,7 +2,7 @@ package com.xylugah.springcore.service;
 
 import org.apache.log4j.Logger;
 
-import com.xylugah.springcore.model.Response;
+import com.xylugah.springcore.messages.Response;
 
 public class EnvironmentsSv extends Service {
 	private static final Logger logger = Logger.getLogger(EnvironmentsSv.class);

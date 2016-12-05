@@ -11,8 +11,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.xylugah.springcore.model.Request;
-import com.xylugah.springcore.model.Response;
+import com.xylugah.springcore.messages.Request;
+import com.xylugah.springcore.messages.Response;
 
 public class JSONTransport implements Transport {
 

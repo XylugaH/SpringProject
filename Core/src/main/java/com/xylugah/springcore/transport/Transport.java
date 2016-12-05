@@ -2,8 +2,8 @@ package com.xylugah.springcore.transport;
 
 import java.net.Socket;
 
-import com.xylugah.springcore.model.Request;
-import com.xylugah.springcore.model.Response;
+import com.xylugah.springcore.messages.Request;
+import com.xylugah.springcore.messages.Response;
 
 public interface Transport {
 	public Request receiveRequest(final Socket socket);

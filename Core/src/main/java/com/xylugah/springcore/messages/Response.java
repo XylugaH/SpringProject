@@ -1,4 +1,4 @@
-package com.xylugah.springcore.model;
+package com.xylugah.springcore.messages;
 
 import java.io.Serializable;
 import java.util.List;

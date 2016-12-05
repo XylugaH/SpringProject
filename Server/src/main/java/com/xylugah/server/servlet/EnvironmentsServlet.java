@@ -17,10 +17,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.xylugah.springcore.dao.DataDAO;
+import com.xylugah.springcore.entity.Client;
+import com.xylugah.springcore.messages.EnvironmentsRequest;
+import com.xylugah.springcore.messages.Response;
 import com.xylugah.springcore.model.Action;
-import com.xylugah.springcore.model.Client;
-import com.xylugah.springcore.model.EnvironmentsRequest;
-import com.xylugah.springcore.model.Response;
 import com.xylugah.springcore.transport.Transport;
 
 public class EnvironmentsServlet extends HttpServlet {
@@ -49,7 +49,7 @@ public class EnvironmentsServlet extends HttpServlet {
 				logger.error("No valid id - " + id, e);
 			}
 		} else {
-			List<Client> clientList = dao.getClientList();
+			List<Client> clientList = dao.getAll();
 			for (Client client : clientList) {
 				printClient(client, out);
 			}

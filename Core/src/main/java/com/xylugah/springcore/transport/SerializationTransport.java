@@ -7,8 +7,8 @@ import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
-import com.xylugah.springcore.model.Request;
-import com.xylugah.springcore.model.Response;
+import com.xylugah.springcore.messages.Request;
+import com.xylugah.springcore.messages.Response;
 
 public class SerializationTransport implements Transport {
 	public static final Logger logger = Logger.getLogger(SerializationTransport.class);

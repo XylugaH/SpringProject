@@ -1,4 +1,6 @@
-package com.xylugah.springcore.model;
+package com.xylugah.springcore.messages;
+
+import com.xylugah.springcore.model.Action;
 
 public class EnvironmentsRequest extends Request {
 
