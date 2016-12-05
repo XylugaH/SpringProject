@@ -7,12 +7,12 @@ import org.apache.log4j.Logger;
 
 import com.xylugah.springcore.entity.Client;
 
-public class DataMemoryDAO implements DataDAO<Client> {
+public class ClientMemoryDAO implements DataDAO<Client> {
 
-	public static final Logger logger = Logger.getLogger(DataMemoryDAO.class);
+	public static final Logger logger = Logger.getLogger(ClientMemoryDAO.class);
 	private List<Client> entityList = new CopyOnWriteArrayList<>();
 
-	public DataMemoryDAO() {
+	public ClientMemoryDAO() {
 		super();
 	}
 
