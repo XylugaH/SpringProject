@@ -12,7 +12,7 @@ import com.mongodb.MongoClient;
 import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
-public class ClientMongoDBDAO implements DataDAO<Client> {
+public class ClientMongoDBDAO implements DataDAO<Client, Integer> {
 
 	private MongoClient mongo = null;
 	private DB db = null;
@@ -37,7 +37,7 @@ public class ClientMongoDBDAO implements DataDAO<Client> {
 	}
 
 	@Override
-	public boolean removeById(final int id) {
+	public boolean removeById(final Integer id) {
 		DBCollection table = db.getCollection(this.dbCollection);
 
 		BasicDBObject searchQuery = new BasicDBObject();
@@ -53,7 +53,7 @@ public class ClientMongoDBDAO implements DataDAO<Client> {
 	}
 
 	@Override
-	public Client getById(int id) {
+	public Client getById(final Integer id) {
 		DBCollection table = db.getCollection(this.dbCollection);
 
 		BasicDBObject searchQuery = new BasicDBObject();

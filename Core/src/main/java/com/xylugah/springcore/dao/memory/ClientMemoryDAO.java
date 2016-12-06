@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
-public class ClientMemoryDAO implements DataDAO<Client> {
+public class ClientMemoryDAO implements DataDAO<Client, Integer> {
 
 	public static final Logger logger = Logger.getLogger(ClientMemoryDAO.class);
 	private List<Client> entityList = new CopyOnWriteArrayList<>();
@@ -26,7 +26,7 @@ public class ClientMemoryDAO implements DataDAO<Client> {
 	}
 
 	@Override
-	public boolean removeById(final int id) {
+	public boolean removeById(final Integer id) {
 		try {
 			entityList.remove(id);
 			return true;
@@ -39,7 +39,7 @@ public class ClientMemoryDAO implements DataDAO<Client> {
 	}
 
 	@Override
-	public Client getById(final int id) {
+	public Client getById(final Integer id) {
 		try {
 			Client entity = entityList.get(id);
 			return entity;

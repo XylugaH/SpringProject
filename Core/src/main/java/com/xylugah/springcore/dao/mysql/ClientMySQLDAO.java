@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
-public class ClientMySQLDAO implements DataDAO<Client> {
+public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 
 	private static final Logger logger = Logger.getLogger(ClientMySQLDAO.class);
 	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
@@ -47,7 +47,7 @@ public class ClientMySQLDAO implements DataDAO<Client> {
 	}
 
 	@Override
-	public boolean removeById(int id) {
+	public boolean removeById(final Integer id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
@@ -67,7 +67,7 @@ public class ClientMySQLDAO implements DataDAO<Client> {
 	}
 
 	@Override
-	public Client getById(int id) {
+	public Client getById(final Integer id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
