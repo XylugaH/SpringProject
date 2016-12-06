@@ -26,26 +26,26 @@ public class ClientMemoryDAO implements DataDAO<Client, Integer> {
 	}
 
 	@Override
-	public boolean removeById(final Integer id) {
+	public boolean removeById(final Integer key) {
 		try {
-			entityList.remove(id);
+			entityList.remove(key);
 			return true;
 		} catch (IndexOutOfBoundsException e) {
 			if (logger.isInfoEnabled()) {
-				logger.info("Out of index!" + id);
+				logger.info("Out of index!" + key);
 			}
 			return false;
 		}
 	}
 
 	@Override
-	public Client getById(final Integer id) {
+	public Client getById(final Integer key) {
 		try {
-			Client entity = entityList.get(id);
+			Client entity = entityList.get(key);
 			return entity;
 		} catch (IndexOutOfBoundsException e) {
 			if (logger.isInfoEnabled()) {
-				logger.info("Out of index!" + id);
+				logger.info("Out of index!" + key);
 			}
 			return null;
 		}

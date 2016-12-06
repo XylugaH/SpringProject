@@ -47,14 +47,14 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 	}
 
 	@Override
-	public boolean removeById(final Integer id) {
+	public boolean removeById(final Integer key) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement("DELETE FROM user WHERE id=?");
-			stmt.setInt(1, id);
+			stmt.setInt(1, key);
 			stmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -67,14 +67,14 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 	}
 
 	@Override
-	public Client getById(final Integer id) {
+	public Client getById(final Integer key) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 
 		try {
 			conn = getConnection();
 			stmt = conn.prepareStatement("SELECT * FROM client WHERE id=?");
-			stmt.setLong(1, id);
+			stmt.setLong(1, key);
 
 			ResultSet rs = stmt.executeQuery();
 

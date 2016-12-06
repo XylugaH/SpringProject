@@ -21,7 +21,7 @@ import com.xylugah.springcore.entity.Client;
 public class AddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static Logger logger = Logger.getLogger(AddServlet.class);
-	private DataDAO<Client> dao;
+	private DataDAO<Client, Integer> dao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -68,7 +68,7 @@ public class AddServlet extends HttpServlet {
 		super.init(config);
 		ApplicationContext ac = (ApplicationContext) config.getServletContext()
 				.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
-		this.dao = (DataDAO<Client>) ac.getBean("DataDAO");
+		this.dao = (DataDAO<Client, Integer>) ac.getBean("DataDAO");
 	}
 
 }

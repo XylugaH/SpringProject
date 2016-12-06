@@ -37,11 +37,11 @@ public class ClientMongoDBDAO implements DataDAO<Client, Integer> {
 	}
 
 	@Override
-	public boolean removeById(final Integer id) {
+	public boolean removeById(final Integer key) {
 		DBCollection table = db.getCollection(this.dbCollection);
 
 		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("id", id);
+		searchQuery.put("id", key);
 		DBObject cursor = table.findOne(searchQuery);
 
 		if (cursor != null) {
@@ -53,11 +53,11 @@ public class ClientMongoDBDAO implements DataDAO<Client, Integer> {
 	}
 
 	@Override
-	public Client getById(final Integer id) {
+	public Client getById(final Integer key) {
 		DBCollection table = db.getCollection(this.dbCollection);
 
 		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("id", id);
+		searchQuery.put("id", key);
 		DBObject cursor = table.findOne(searchQuery);
 		if (cursor != null) {
 			Client client = new Client();
