@@ -1,4 +1,4 @@
-package com.xylugah.springcore.dao;
+package com.xylugah.springcore.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
 public class ClientMySQLDAO implements DataDAO<Client> {

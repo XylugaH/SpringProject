@@ -1,10 +1,11 @@
-package com.xylugah.springcore.dao;
+package com.xylugah.springcore.dao.memory;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.apache.log4j.Logger;
 
+import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
 public class ClientMemoryDAO implements DataDAO<Client> {

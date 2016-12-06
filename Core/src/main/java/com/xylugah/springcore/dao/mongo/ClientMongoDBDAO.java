@@ -1,4 +1,4 @@
-package com.xylugah.springcore.dao;
+package com.xylugah.springcore.dao.mongo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
 public class ClientMongoDBDAO implements DataDAO<Client> {
