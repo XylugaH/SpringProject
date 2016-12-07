@@ -8,22 +8,16 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
 import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
-public class ClientMongoDBDAO implements DataDAO<Client, Integer> {
-
-	private MongoClient mongo = null;
+public class ClientMongoDBDAO extends MongoDBConnector implements DataDAO<Client, Integer> {
 	private DB db = null;
 
-	private final int dbPort = 27017;
-	private final String dbHost = "localhost";
-	private final String dbname = "ClientDB";
 	private final String dbCollection = "client";
 
 	public ClientMongoDBDAO() {
-		getConnection();
+		this.db = getConnection();
 	}
 
 	@Override
@@ -89,12 +83,6 @@ public class ClientMongoDBDAO implements DataDAO<Client, Integer> {
 		} else {
 			return clientList;
 		}
-	}
-
-	@SuppressWarnings("deprecation")
-	private void getConnection() {
-		this.mongo = new MongoClient(this.dbHost, this.dbPort);
-		this.db = mongo.getDB(dbname);
 	}
 
 }
