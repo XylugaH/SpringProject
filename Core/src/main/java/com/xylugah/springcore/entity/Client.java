@@ -39,4 +39,10 @@ public class Client extends Entity {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder().append("ip=").append(ip).append(" ").append("port=").append(port);
+		return str.toString();
+	}
+
 }
