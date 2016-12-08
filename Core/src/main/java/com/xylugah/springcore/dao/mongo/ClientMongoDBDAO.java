@@ -3,6 +3,8 @@ package com.xylugah.springcore.dao.mongo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -12,22 +14,27 @@ import com.xylugah.springcore.dao.DataDAO;
 import com.xylugah.springcore.entity.Client;
 
 public class ClientMongoDBDAO extends MongoDBConnector implements DataDAO<Client, Integer> {
-	private DB db = null;
 
-	private final String dbCollection = "client";
+	private static final Logger logger = Logger.getLogger(ClientMongoDBDAO.class);
+	private DB db = null;
+	private final String dbCollection;
 
 	public ClientMongoDBDAO() {
+		dbCollection = "client";
 		this.db = getConnection();
 	}
 
 	@Override
-	public void add(final Client client) {
+	public void add(final Client entity) {
 		DBCollection table = db.getCollection(this.dbCollection);
 		BasicDBObject document = new BasicDBObject();
 		document.put("id", 2);
-		document.put("ip", client.getIp());
-		document.put("port", client.getPort());
+		document.put("ip", entity.getIp());
+		document.put("port", entity.getPort());
 		table.insert(document);
+		if (logger.isInfoEnabled()) {
+			logger.info("Add client sucessfull!" + entity);
+		}
 	}
 
 	@Override
@@ -40,6 +47,9 @@ public class ClientMongoDBDAO extends MongoDBConnector implements DataDAO<Client
 
 		if (cursor != null) {
 			table.remove(searchQuery);
+			if (logger.isInfoEnabled()) {
+				logger.info("Remove client by key" + key + "sucessfull!");
+			}
 			return true;
 		} else {
 			return false;

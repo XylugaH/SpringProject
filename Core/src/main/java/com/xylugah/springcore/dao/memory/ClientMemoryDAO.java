@@ -21,7 +21,7 @@ public class ClientMemoryDAO implements DataDAO<Client, Integer> {
 	public void add(final Client entity) {
 		entityList.add(entity);
 		if (logger.isInfoEnabled()) {
-			logger.info("Add client sucessfull!");
+			logger.info("Add client sucessfull!" + entity);
 		}
 	}
 
@@ -29,6 +29,9 @@ public class ClientMemoryDAO implements DataDAO<Client, Integer> {
 	public boolean removeById(final Integer key) {
 		try {
 			entityList.remove(key);
+			if (logger.isInfoEnabled()) {
+				logger.info("Remove client sucessfull!");
+			}
 			return true;
 		} catch (IndexOutOfBoundsException e) {
 			if (logger.isInfoEnabled()) {
