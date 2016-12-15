@@ -1,37 +1,44 @@
 package com.xylugah.server.test;
 
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.xylugah.server.util.IPAddressValidator;
+
 public class IPAddressValidatorTest {
-	/*
-	 * private IPAddressValidator ipAddressValidator;
-	 * 
-	 * @BeforeClass public void initData(){ ipAddressValidator = new
-	 * IPAddressValidator(); }
-	 * 
-	 * @DataProvider public Object[][] ValidIPAddressProvider() { return new
-	 * Object[][]{ new Object[] {"1.1.1.1"},new Object[] {"255.255.255.255"},
-	 * new Object[] {"192.168.1.1"},new Object[] {"10.10.1.1"}, new Object[]
-	 * {"132.254.111.10"},new Object[] {"26.10.2.10"}, new Object[]
-	 * {"127.0.0.1"} }; }
-	 * 
-	 * @DataProvider public Object[][] InvalidIPAddressProvider() { return new
-	 * Object[][]{ new Object[] {"10.10.10"},new Object[] {"10.10"}, new
-	 * Object[] {"10"},new Object[] {"a.a.a.a"}, new Object[] {"10.0.0.a"},new
-	 * Object[] {"10.10.10.256"}, new Object[] {"222.222.2.999"},new Object[]
-	 * {"999.10.10.20"}, new Object[] {"2222.22.22.22"},new Object[]
-	 * {"22.2222.22.2"}, new Object[] {"10.10.10"},new Object[] {"10.10.10"}, };
-	 * }
-	 * 
-	 * @Test(dataProvider = "ValidIPAddressProvider") public void
-	 * ValidIPAddressTest(String ip) { boolean valid =
-	 * ipAddressValidator.validate(ip);
-	 * System.out.println("IPAddress is valid : " + ip + " , " + valid);
-	 * Assert.assertEquals(true, valid); }
-	 * 
-	 * @Test(dataProvider = "InvalidIPAddressProvider",
-	 * dependsOnMethods="ValidIPAddressTest") public void
-	 * InValidIPAddressTest(String ip) { boolean valid =
-	 * ipAddressValidator.validate(ip);
-	 * System.out.println("IPAddress is valid : " + ip + " , " + valid);
-	 * Assert.assertEquals(false, valid); }
-	 */
+
+	private IPAddressValidator ipAddressValidator = new IPAddressValidator();
+
+	private final String[] validIPAdress = { "1.1.1.1", "255.255.255.255", "192.168.1.1", "10.10.1.1", "132.254.111.10",
+			"26.10.2.10", "127.0.0.1" };
+	private final String[] invalidIPAdress = { "10.10.10", "10.10", "10", "a.a.a.a", "10.0.0.a", "10.10.10.256",
+			"222.222.2.999", "999.10.10.20", "2222.22.22.22", "22.2222.22.2", "10.10.10", "10.10.10", "10.10.-1.1",
+			"" };
+
+	@Test()
+	public void ValidIPAddressTest() {
+		for (int i = 0; i < validIPAdress.length; i++) {
+			String ip = validIPAdress[i];
+			boolean valid = ipAddressValidator.validate(ip);
+			System.out.println("IPAddress is valid : " + ip + " , " + valid);
+			Assert.assertTrue(valid);
+		}
+	}
+
+	@Test()
+	public void InValidIPAddressTest() {
+		for (int i = 0; i < invalidIPAdress.length; i++) {
+			String ip = invalidIPAdress[i];
+			boolean valid = ipAddressValidator.validate(ip);
+			System.out.println("IPAddress is valid : " + ip + " , " + valid);
+			Assert.assertFalse(valid);
+		}
+	}
+
+	@Test()
+	public void NullIPAddressTest() {
+		boolean valid = ipAddressValidator.validate(null);
+		Assert.assertFalse(valid);
+	}
+
 }
