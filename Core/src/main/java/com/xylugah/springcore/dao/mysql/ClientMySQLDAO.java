@@ -18,9 +18,15 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 
 	private static final Logger logger = Logger.getLogger(ClientMySQLDAO.class);
 	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
+
 	private String URL;
 	private String user;
 	private String password;
+
+	private String insertQuery = "INSERT INTO clients(ip, port) VALUES(?, ?)";
+	private String deleteQuery = "DELETE FROM clients WHERE id=?";
+	private String getByIdQuery = "SELECT * FROM clients WHERE id=?";
+	private String getAllQuery = "SELECT * FROM clients ORDER BY id";
 
 	@Override
 	public void add(final Client client) {
@@ -29,7 +35,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("INSERT INTO client(ip, port) VALUES(?, ?)", Statement.RETURN_GENERATED_KEYS);
+			stmt = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, client.getIp());
 			stmt.setInt(2, client.getPort());
 
@@ -37,7 +43,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 			ResultSet rs = stmt.getGeneratedKeys();
 
 		} catch (SQLException e) {
-			// e.printStackTrace();
+			logger.error("Error ", e);
 			throw new RuntimeException(e);
 		} finally {
 			close(stmt);
@@ -53,12 +59,12 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("DELETE FROM user WHERE id=?");
+			stmt = conn.prepareStatement(deleteQuery);
 			stmt.setInt(1, key);
 			stmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// e.printStackTrace();
+			logger.error("Error ", e);
 			throw new RuntimeException(e);
 		} finally {
 			close(stmt);
@@ -73,7 +79,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("SELECT * FROM client WHERE id=?");
+			stmt = conn.prepareStatement(getByIdQuery);
 			stmt.setLong(1, key);
 
 			ResultSet rs = stmt.executeQuery();
@@ -89,6 +95,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 				return null;
 			}
 		} catch (SQLException e) {
+			logger.error("Error ", e);
 			return null;
 		} finally {
 			close(stmt);
@@ -104,7 +111,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("SELECT * FROM client ORDER BY id");
+			stmt = conn.prepareStatement(getAllQuery);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -116,7 +123,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 				list.add(client);
 			}
 		} catch (SQLException e) {
-			// e.printStackTrace();
+			logger.error("Error ", e);
 			throw new RuntimeException(e);
 		} finally {
 			close(stmt);
@@ -131,7 +138,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 			Class.forName(DRIVER_NAME);
 			return DriverManager.getConnection(this.URL, this.user, this.password);
 		} catch (Exception e) {
-			// e.printStackTrace();
+			logger.error("Error ", e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -141,7 +148,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				// e.printStackTrace();
+				logger.error("Error ", e);
 				throw new RuntimeException(e);
 			}
 		}
@@ -152,10 +159,34 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 			try {
 				stmt.close();
 			} catch (SQLException e) {
-				// e.printStackTrace();
+				logger.error("Error ", e);
 				throw new RuntimeException(e);
 			}
 		}
+	}
+
+	public String getURL() {
+		return URL;
+	}
+
+	public void setURL(String uRL) {
+		URL = uRL;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
