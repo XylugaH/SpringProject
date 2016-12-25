@@ -5,7 +5,7 @@
 	
 <import resource="classpath*:core-context.xml"/>
 
-	<bean id="DataDAO" parent="DataMemoryDAO"></bean>
+	<bean id="DataDAO" parent="DataMySQLDAO"></bean>
 
 	<bean id="DataMemoryDAO" class="com.xylugah.springcore.dao.memory.ClientMemoryDAO"
 		scope="singleton" lazy-init="true">
@@ -29,6 +29,13 @@
 	
 	<bean id="DataMongoDBDAO" class="com.xylugah.springcore.dao.mongo.ClientMongoDBDAO"
 		scope="singleton" lazy-init="true">
+	</bean>
+	
+	<bean id="DataMySQLDAO" class="com.xylugah.springcore.dao.mysql.ClientMySQLDAO"
+		scope="singleton" lazy-init="true">
+		<property name="URL" value="jdbc:mysql://localhost/springdbtest?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+		<property name="user" value="root"/>
+		<property name="password" value="root"/>
 	</bean>
 
 </beans>
