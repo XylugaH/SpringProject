@@ -38,10 +38,7 @@ public class ClientMySQLDAO implements DataDAO<Client, Integer> {
 			stmt = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, client.getIp());
 			stmt.setInt(2, client.getPort());
-
-			int result = stmt.executeUpdate();
-			ResultSet rs = stmt.getGeneratedKeys();
-
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			logger.error("Error ", e);
 			throw new RuntimeException(e);
