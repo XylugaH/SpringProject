@@ -16,4 +16,37 @@
 		scope="singleton" 
 		lazy-init="true">
 	</bean>
+	
+	<bean id="DataDAO" parent="DataMySQLDAO"></bean>
+
+	<bean id="DataMemoryDAO" class="com.xylugah.springcore.dao.memory.ClientMemoryDAO"
+		scope="singleton" lazy-init="true">
+		<property name="entityList">
+			<list>
+				<bean class="com.xylugah.springcore.entity.Client">
+		    		<property name="ip" value="127.0.0.1" />
+					<property name="port" value="1238" />
+				</bean>
+				<bean class="com.xylugah.springcore.entity.Client">
+		    		<property name="ip" value="192.168.1.2" />
+					<property name="port" value="12381" />
+				</bean>
+				<bean class="com.xylugah.springcore.entity.Client">
+		    		<property name="ip" value="192.168.1.3" />
+					<property name="port" value="12381" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="DataMongoDBDAO" class="com.xylugah.springcore.dao.mongo.ClientMongoDBDAO"
+		scope="singleton" lazy-init="true">
+	</bean>
+	
+	<bean id="DataMySQLDAO" class="com.xylugah.springcore.dao.mysql.ClientMySQLDAO"
+		scope="singleton" lazy-init="true">
+		<property name="URL" value="jdbc:mysql://localhost/springdbtest?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+		<property name="user" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
 </beans>
